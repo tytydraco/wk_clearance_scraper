@@ -16,7 +16,13 @@ jobs:
         run: pip install BeautifulSoup4
 
       - name: Run
-        run: python main.py
+        env:
+          GMAIL_EMAIL: ${{ secrets.GMAIL_EMAIL }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          RECIPIENTS_LIST: ${{ secrets.RECIPIENTS_LIST }}
+        run: |
+          export 
+          python main.py
         
       - name: Push
         run: |

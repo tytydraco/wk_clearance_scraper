@@ -1,0 +1,27 @@
+name: Run
+
+on:
+  schedule:
+    - cron:  '0 * * * *'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+    
+      - name: Install modules
+        run: pip install BeautifulSoup4
+
+      - name: Run
+        run: python main.py
+        
+      - name: Push
+        run: |
+          git config --global user.email "main@wk-clearance-scraper.com"
+          git config --global user.name "wk-clearance-scraper"
+          git add .
+          git commit -sam "Updated cache file" || true
+          git push || true

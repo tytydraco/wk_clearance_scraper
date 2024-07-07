@@ -24,7 +24,8 @@ def get_clearance_listings():
     for listing in listings:
         name = listing.find(class_='woocommerce-loop-product__title').string
 
-        price_parent = listing.find(class_='woocommerce-Price-amount amount')
+        price_parent = listing.findAll(
+            class_='woocommerce-Price-amount amount')[1]
         price_parent = price_parent.find('bdi').contents
         price = price_parent[1]
 

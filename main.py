@@ -78,8 +78,7 @@ def send_email(listings: dict):
         sent_from = GMAIL_EMAIL
         to = RECIPIENTS_LIST
         pretty_listings_text = pretty_listings(listings)
-        email_text = f'Subject: West Koast Clearance Listings\n\n{
-            pretty_listings_text}'
+        email_text = 'Subject: West Koast Clearance Listings\n\n' + pretty_listings_text
 
         server.sendmail(sent_from, to, email_text)
         server.close()

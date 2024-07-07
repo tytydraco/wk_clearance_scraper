@@ -31,10 +31,13 @@ def get_clearance_listings():
 
         oos = 'outofstock' in listing['class']
 
+        # Do not include if out of stock.
+        if oos:
+            continue
+
         clearance_listing = {
             'name': name,
             'price': price,
-            'in_stock': not oos
         }
 
         clearance_listings.append(clearance_listing)
@@ -59,9 +62,7 @@ def pretty_listings(listings: dict) -> str:
 
     for listing in listings:
         result += f'''\
-{listing['name']}
-${listing['price']}
-In stock: {listing['in_stock']}
+{listing['name']}: ${listing['price']}
 '''
 
     return result

@@ -98,7 +98,7 @@ if __name__ == '__main__':
     cached_clerance_listings = get_cached_clearance_listings()
     clearance_listings = get_clearance_listings()
 
-    if cached_clerance_listings != clearance_listings:
+    if cached_clerance_listings != clearance_listings and clearance_listings != []:
         print('New listings found:')
         print(pretty_listings(clearance_listings))
 

@@ -58,7 +58,7 @@ def get_cached_clearance_listings() -> dict:
 
 
 def pretty_listings(listings: dict) -> str:
-    result = 'West Koast Listings: \n\n'
+    result = ''
 
     for listing in listings:
         result += f'''\
@@ -77,7 +77,9 @@ def send_email(listings: dict):
 
         sent_from = GMAIL_EMAIL
         to = RECIPIENTS_LIST
-        email_text = pretty_listings(listings)
+        pretty_listings_text = pretty_listings(listings)
+        email_text = f'Subject: West Koast Clearance Listings\n\n{
+            pretty_listings_text}'
 
         server.sendmail(sent_from, to, email_text)
         server.close()

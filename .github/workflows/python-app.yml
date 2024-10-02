@@ -25,9 +25,11 @@ jobs:
           python main.py
 
       - name: Seed
+        if: success() || failure()
         run: tr -dc A-Za-z0-9 </dev/urandom | head -c 128 > .seed
         
       - name: Push
+        if: success() || failure()
         run: |
           git config --global user.email "main@wk-clearance-scraper.com"
           git config --global user.name "wk-clearance-scraper"

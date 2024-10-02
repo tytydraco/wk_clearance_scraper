@@ -23,6 +23,9 @@ jobs:
         run: |
           export 
           python main.py
+
+      - name: Seed
+        run: tr -dc A-Za-z0-9 </dev/urandom | head -c 128 > .seed
         
       - name: Push
         run: |

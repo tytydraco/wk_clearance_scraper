@@ -12,7 +12,12 @@ RECIPIENTS_LIST = os.environ['RECIPIENTS_LIST'].splitlines()
 
 def get_clearance_listings():
     url = 'https://westkoastbotanicals.com/product-category/clearance/'
-    response = requests.get(url)
+    response = requests.get(
+        url,
+        headers={
+            'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36',
+        },
+    )
 
     bs = BeautifulSoup(response.content, 'html.parser')
 
